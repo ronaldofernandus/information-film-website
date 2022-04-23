@@ -14,9 +14,6 @@ module.exports = {
       sinopsis: {
         type: Sequelize.STRING
       },
-      jadwalId: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

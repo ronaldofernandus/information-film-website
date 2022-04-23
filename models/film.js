@@ -10,13 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      film.hasMany(models.jadwal)
+     film.hasMany(models.jadwal)
     }
   }
   film.init({
     namaFilm: DataTypes.STRING,
-    sinopsis: DataTypes.STRING,
-    jadwalId: DataTypes.INTEGER
+    sinopsis: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'film',
