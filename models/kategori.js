@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   kategori.init({
-    kategori: DataTypes.STRING
+    namaKategori: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'kategori',

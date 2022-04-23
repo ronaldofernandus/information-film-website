@@ -8,17 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tanggal: {
-        type: Sequelize.DATE
+      hariTayang: {
+        type: Sequelize.STRING
       },
-      mulai: {
-        type: Sequelize.TIME
-      },
-      selesai: {
-        type: Sequelize.TIME
-      },
-      pesanId: {
-        type: Sequelize.INTEGER
+      jamTayang: {
+        type: Sequelize.STRING
       },
       filmId: {
         type: Sequelize.INTEGER

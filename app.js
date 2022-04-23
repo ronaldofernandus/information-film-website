@@ -1,0 +1,1 @@
+// npx sequelize-cli model:generate --name pesan --attributes tanggal_pesan:date,jumlah:integer,total_harga:integer,tiketId:integer    

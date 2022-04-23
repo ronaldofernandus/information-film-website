@@ -10,14 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      jadwal.belongsTo(models.film)
     }
   }
   jadwal.init({
-    tanggal: DataTypes.DATE,
-    mulai: DataTypes.TIME,
-    selesai: DataTypes.TIME,
-    pesanId: DataTypes.INTEGER,
+    hariTayang: DataTypes.STRING,
+    jamTayang: DataTypes.STRING,
     filmId: DataTypes.INTEGER
   }, {
     sequelize,

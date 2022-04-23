@@ -3,23 +3,22 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class film extends Model {
+  class interface extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      film.hasMany(models.jadwal)
+      // define association here
     }
   }
-  film.init({
-    namaFilm: DataTypes.STRING,
-    sinopsis: DataTypes.STRING,
-    jadwalId: DataTypes.INTEGER
+  interface.init({
+    filmId: DataTypes.INTEGER,
+    kategoriId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'film',
+    modelName: 'interface',
   });
-  return film;
+  return interface;
 };
