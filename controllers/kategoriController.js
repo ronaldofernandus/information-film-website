@@ -3,10 +3,10 @@ const { kategori } = require("../models");
 class kategoriController {
   static async getKategori(req, res) {
     try {
-      let getKategori = await kategori.findAll({
+      let getKategoris = await kategori.findAll({
         order: [["id", "Asc"]],
       });
-      res.json(getKategori);
+     res.render('kategori.ejs',{getKategoris})
     } catch (err) {
       res.json(err);
     }
@@ -17,7 +17,7 @@ class kategoriController {
       let tambahKategori = await kategori.create({
         namaKategori,
       });
-      res.json(tambahKategori);
+      res.render('tambahKategori.ejs',{tambahKategori})
     } catch (err) {
       res.json(err);
     }

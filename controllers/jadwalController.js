@@ -3,11 +3,11 @@ const { film, jadwal } = require("../models");
 class jadwalController {
   static async lihatJadwal(req, res) {
     try {
-      let lihatJadwal = await jadwal.findAll({
+      let tempJadwals = await jadwal.findAll({
         include: [film],
         order: [["id", "Asc"]],
       });
-      res.json(lihatJadwal);
+      res.render('jadwal.ejs',{tempJadwals})
     } catch (err) {
       res.json(err);
     }

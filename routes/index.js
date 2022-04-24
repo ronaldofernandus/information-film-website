@@ -2,9 +2,7 @@ const express = require("express");
 const route = express.Router();
 
 route.get("/", (req, res) => {
-  res.json({
-    message: "Bioskop",
-  });
+  res.render('index.ejs')
 });
 
 const filmRoute = require("./film");

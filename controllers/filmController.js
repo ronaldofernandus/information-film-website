@@ -1,25 +1,26 @@
-const { film,jadwal,kategori } = require("../models");
+const { film, jadwal, kategori } = require("../models");
 
 class filmController {
   static async lihatFilm(req, res) {
     try {
-      let lihatFilm = await film.findAll({
-        include:[jadwal,kategori],
+      let tempFilms = await film.findAll({
+        include: [jadwal, kategori],
         order: [["id", "Asc"]],
       });
-      res.json(lihatFilm);
+      res.render("film.ejs", { tempFilms });
     } catch (err) {
       res.json(err);
     }
   }
+ 
   static async tambahFilm(req, res) {
     try {
-      const { image, namaFilm, sinopsis,kategoriId } = req.body;
+      const { image, namaFilm, sinopsis, kategoriId } = req.body;
       let tambahFilm = await film.create({
         image,
         namaFilm,
         sinopsis,
-        kategoriId
+        kategoriId,
       });
       res.json(tambahFilm);
     } catch (err) {
