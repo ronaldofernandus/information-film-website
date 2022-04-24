@@ -9,10 +9,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       hariTayang: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       jamTayang: {
-        type: Sequelize.STRING
+        type: Sequelize.TIME
       },
       filmId: {
         type: Sequelize.INTEGER

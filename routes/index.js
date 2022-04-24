@@ -7,11 +7,11 @@ route.get("/", (req, res) => {
   })
 })
 
-//   const filmRoute = require("./film");
-//   route.use("/films", filmRoute);
+  const filmRoute = require("./film");
+  route.use("/film", filmRoute);
 
-//   const jadwalRoute = require("./jadwal")
-//   route.use('/jadwal', jadwalRoute)
+  const jadwalRoute = require("./jadwal")
+  route.use('/jadwal', jadwalRoute)
 
   const kategoriRoute = require('./kategori')
   route.use('/kategori', kategoriRoute)
