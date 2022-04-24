@@ -1,9 +1,10 @@
-const { film } = require("../models");
+const { film,jadwal } = require("../models");
 
 class filmController {
   static async lihatFilm(req, res) {
     try {
       let lihatFilm = await film.findAll({
+        include:[jadwal],
         order: [["id", "Asc"]],
       });
       res.json(lihatFilm);
