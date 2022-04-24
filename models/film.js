@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
      film.hasMany(models.jadwal)
+     film.belongsToMany(models.kategori,{through:penghubung})
      
     }
   }

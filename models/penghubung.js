@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      penghubung.belongsTo(models.film)
+      penghubung.belongsTo(models.kategori)
     }
   }
   penghubung.init({
