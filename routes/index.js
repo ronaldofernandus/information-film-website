@@ -15,6 +15,8 @@ route.get("/", (req, res) => {
 
   const kategoriRoute = require('./kategori')
   route.use('/kategori', kategoriRoute)
+  const penghubungRoute = require('./penghubung')
+  route.use('/penghubung', penghubungRoute)
 
 
 module.exports = route;
