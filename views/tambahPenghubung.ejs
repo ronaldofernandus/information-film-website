@@ -42,6 +42,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/kategori">Kategori</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/penghubung/add">Penghubung</a>
+              </li>
 
             </ul>
           </div>
@@ -50,7 +53,7 @@
     </div>
     <div class="row ">
       <div class="col-12 text-center">
-        <h5>Tambah Data Film</h5>
+        <h5>Penghubung</h5>
         <p>
           Berisi Halaman Form Input
         </p>
@@ -58,12 +61,28 @@
       <div class="col-12 my-2">
         <form action="/penghubung/add" method="post">
           <div class="mb-3">
-            <label class="form-label" for="customFile">Film Id</label>
-            <input type="number" class="form-control"  name="filmId" />
-          </div>
+            <label class="form-label" for="customFile">Film </label>
+            <div class="input-group mb-3">
+              <select class="form-select" name="filmId">
+                <option selected>Silahkan Pilih Film</option>
+                <% dataFilm.forEach(film => { %>
+
+                <option value="<%= film.id %>"><%= film.namaFilm %></option>
+                <% }) %>
+              </select>
+            </div>
+          </div>  
           <div class="mb-3">
             <label for="film" class="form-label">Kategori Id</label>
-            <input type="number" class="form-control" name="kategoriId">
+            <div class="input-group mb-3">
+              <select class="form-select" name="kategoriId">
+                <option selected>Silahkan Pilih Kategori</option>
+                <% dataKategories.forEach(kategori => { %>
+
+                <option value="<%= kategori.id %>"><%= kategori.namaKategori %></option>
+                <% }) %>
+              </select>
+            </div>
           </div>
           <div class="mb-3">
             <label for="tanggal" class="form-label">Tanggal</label>

@@ -68,7 +68,16 @@ class filmController {
       let hapusFilm = await film.destroy({
         where: { id },
       });
-     res.redirect('/film')
+      let hapusPenghubung=await penghubung.destroy({
+          where: { 
+
+            filmId:id,
+            kategoriId:id,
+            jadwalId:id
+
+            },
+      })
+     res.redirect('/')
     } catch (err) {
       res.json(err);
     }

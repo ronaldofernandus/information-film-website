@@ -45,7 +45,9 @@ class penghubungController {
   static async createPenghubungPage(req, res) {
     try {
       let jadwalData = await jadwal.findAll({});
-      res.render("tambahPenghubung.ejs", { jadwalData });
+      let dataFilm = await film.findAll({});
+      let dataKategories = await kategori.findAll({});
+      res.render("tambahPenghubung.ejs", { jadwalData,dataFilm,dataKategories });
     } catch (err) {
       res.json(err);
     }
