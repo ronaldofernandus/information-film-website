@@ -34,14 +34,15 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
+                                <a class="nav-link" href="/film">Film</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/jadwal">Jadwal</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/kategori">Kategori</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link">Log In</a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -49,37 +50,39 @@
         </div>
         <div class="row ">
             <div class="col-12 text-center">
-                <h5>Kategori Page</h5>
+                <h5>Jam Tayang</h5>
                 <p>
-                    Berisi Halaman Daftar Kategori
+                    Berikut adalah daftar jam tayang film
                 </p>
-               <a href="/kategori/add">Tambah Kategori
+                <a href="/jadwal/add">+ Tambah Jadwal</a>
             </div>
             <div class="col-12 my-2">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Kategori</th>
-                            <th>Action</th>
-                            
-                            
+                            <th>Tanggal Tayang</th>
+                            <th>Jam Tayang</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <% getKategoris.forEach(getKategori => { %>
+                        <% tempJadwals.forEach((tempJadwal,index) => { %>
                         <tr>
-                          <td><%= getKategori.id %></td>
-                          <td><%= getKategori.namaKategori %></td>
-                          <td>
-                            <a href="/kategori/edit/<%= getKategori.id %>">Edit</a>
-                            <a href="/kategori/delete/<%= getKategori.id %>">Delete</a>
-                          </td>
-                          
+                            <td><%= index +1 %></td>
+                            <td><%= tempJadwal.hariTayang %></td>
+                            <td><%= tempJadwal.jamTayang %></td>
+                            <td>
+                                <a href="/jadwal/edit/<%= tempJadwal.id %>">Edit</a>
+                                <a href="/jadwal/delete/<%= tempJadwal.id %>">Delete</a>
+                            </td>
+
                         </tr>
-            
+
                         <% }) %>
-                      </tbody>
+
+
+                    </tbody>
 
                 </table>
 

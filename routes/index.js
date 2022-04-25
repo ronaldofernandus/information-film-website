@@ -1,9 +1,8 @@
 const express = require("express");
 const route = express.Router();
+const{indexController}=require("../controllers")
 
-route.get("/", (req, res) => {
-  res.render('index.ejs')
-});
+route.get("/", indexController.indexFilm);
 
 const filmRoute = require("./film");
 route.use("/film", filmRoute);

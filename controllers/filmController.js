@@ -4,15 +4,14 @@ class filmController {
   static async lihatFilm(req, res) {
     try {
       let tempFilms = await film.findAll({
-        include: [jadwal, kategori],
         order: [["id", "Asc"]],
       });
-      res.render("film.ejs", { tempFilms });
+      res.render("Film/film.ejs", { tempFilms });
     } catch (err) {
       res.json(err);
     }
   }
- 
+
   static async tambahFilm(req, res) {
     try {
       const { image, namaFilm, sinopsis, kategoriId } = req.body;
@@ -22,7 +21,14 @@ class filmController {
         sinopsis,
         kategoriId,
       });
-      res.json(tambahFilm);
+      res.redirect("/film");
+    } catch (err) {
+      res.json(err);
+    }
+  }
+  static async tambahFilmPage(req, res) {
+    try {
+      res.render("Film/tambahFilm.ejs");
     } catch (err) {
       res.json(err);
     }
@@ -41,13 +47,17 @@ class filmController {
           where: { id },
         }
       );
-      editFilm[0] === 1
-        ? res.json({
-            message: `Film dengan id ${id} sudah di update`,
-          })
-        : res.json({
-            message: `Film dengan id ${id} tidak bisa di update`,
-          });
+      res.redirect("/Film");
+    } catch (err) {
+      res.json(err);
+    }
+  }
+  static async editFilmPage(req, res) {
+    try {
+      const id = +req.params.id;
+      let tempFilms = await film.findByPk(id);
+
+      res.render("Film/editFilm.ejs", { tempFilms });
     } catch (err) {
       res.json(err);
     }

@@ -7,7 +7,7 @@ class jadwalController {
         include: [film],
         order: [["id", "Asc"]],
       });
-      res.render('jadwal.ejs',{tempJadwals})
+      res.render("Jadwal/jadwal.ejs", { tempJadwals });
     } catch (err) {
       res.json(err);
     }
@@ -20,7 +20,14 @@ class jadwalController {
         jamTayang,
         filmId,
       });
-      res.json(tambahJadwal);
+      res.redirect("/Jadwal");
+    } catch (err) {
+      res.json(err);
+    }
+  }
+  static async tambahJadwalPage(req, res) {
+    try {
+      res.render("Jadwal/tambahJadwal.ejs");
     } catch (err) {
       res.json(err);
     }
@@ -42,15 +49,18 @@ class jadwalController {
           where: { filmId },
         }
       );
-      updateJadwal[0] === 1
-        ? res.json({
-            message: `Jadwal dengan id ${id} sudah di update`,
-          })
-        : res.json({
-            message: `Jadwal dengan id ${id} tidak bisa di update`,
-          });
+     res.redirect('/Jadwal')
     } catch (err) {
-      re.json(err);
+      res.json(err);
+    }
+  }
+  static async editJadwalPage(req, res) {
+    try {
+      const id = +req.params.id;
+      let tempJadwals = await jadwal.findByPk(id);
+      res.render("Jadwal/editJadwal.ejs", { tempJadwals });
+    } catch (err) {
+      res.json(err);
     }
   }
   static async deleteJadwal(req, res) {
@@ -59,14 +69,8 @@ class jadwalController {
       let deleteJadwal = await jadwal.destroy({
         where: { id },
       });
-      
-      deleteJadwal === 1
-        ? res.json({
-            message: `Jadwal dengan id ${id} sudah di hapus`,
-          })
-        : res.json({
-            message: `Jadwal dengan id ${id} tidak bisa di hapus`,
-          });
+
+     res.redirect('/Jadwal')
     } catch (err) {
       res.json(err);
     }

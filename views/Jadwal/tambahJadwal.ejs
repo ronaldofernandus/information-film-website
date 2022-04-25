@@ -34,56 +34,41 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                  <a class="nav-link" href="/film">Film</a>
+                <a class="nav-link" href="/film">Film</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/jadwal">Jadwal</a>
+                <a class="nav-link" href="/jadwal">Jadwal</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/kategori">Kategori</a>
+                <a class="nav-link" href="/kategori">Kategori</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link">Log In</a>
-              </li>
-          </ul> 
+
+            </ul>
           </div>
         </div>
       </nav>
     </div>
     <div class="row ">
       <div class="col-12 text-center">
-        <h5>Ship Page</h5>
+        <h5>Tambah Data Jadwal</h5>
         <p>
-          Berisi Halaman Daftar Kapal
+          Berisi Halaman Form Input
         </p>
       </div>
       <div class="col-12 my-2">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Poster</th>
-              <th>Film</th>
-              <th>Kategori</th>
-              <th>Tanggal Tayang</th>
-              <th>Mulai Jam</th>
-            
-            </tr>
-          </thead>
-          <tbody>
-            <% tempFilms.forEach(tempFilm => { %>
-            <tr>
-              <td><%= tempFilm.film.id %></td>
-              <td><%= tempFilm.film.image %></td>
-              <td><%= tempFilm.film.namaFilm %></td>
-              <td><%= tempFilm.name %></td>
-              <td><%= tempFilm.status %></td>
-              <td><%= tempFilm.bounty %></td>
-            </tr>
+        <form action="/jadwal/add" method="post">
+          <div class="mb-3">
+            <label class="form-label" for="customFile">Tanggal tayang</label>
+            <input type="date" class="form-control" id="customFile" name="hariTayang" />
+          </div>
+          <div class="mb-3">
+            <label for="film" class="form-label">Jam Tayang</label>
+            <input type="time" class="form-control" name="jamTayang">
+          </div>
 
-            <% }) %>
-          </tbody>
-        </table>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
 
       </div>
     </div>

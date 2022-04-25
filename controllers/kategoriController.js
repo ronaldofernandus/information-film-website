@@ -6,7 +6,7 @@ class kategoriController {
       let getKategoris = await kategori.findAll({
         order: [["id", "Asc"]],
       });
-     res.render('kategori.ejs',{getKategoris})
+      res.render("Kategori/kategori.ejs", { getKategoris });
     } catch (err) {
       res.json(err);
     }
@@ -17,7 +17,14 @@ class kategoriController {
       let tambahKategori = await kategori.create({
         namaKategori,
       });
-      res.render('tambahKategori.ejs',{tambahKategori})
+      res.redirect("/kategori");
+    } catch (err) {
+      res.json(err);
+    }
+  }
+  static async tambahKategoriPage(req, res) {
+    try {
+      res.render("Kategori/tambahKategori.ejs");
     } catch (err) {
       res.json(err);
     }
@@ -34,13 +41,16 @@ class kategoriController {
           where: { id },
         }
       );
-      editKategori[0] === 1
-        ? res.json({
-            message: `Kategori dengan id ${id} berhasil di update`,
-          })
-        : res.json({
-            message: `Kategori dengan id ${id} gagal di update`,
-          });
+     res.redirect('/kategori')
+    } catch (err) {
+      res.json(err);
+    }
+  }
+  static async editKategoriPage(req, res) {
+    try {
+      const id = +req.params.id;
+      let getKategoris = await kategori.findByPk(id);
+      res.render("Kategori/editKategori.ejs", { getKategoris });
     } catch (err) {
       res.json(err);
     }
@@ -51,13 +61,7 @@ class kategoriController {
       let deleteKategori = await kategori.destroy({
         where: { id },
       });
-      deleteKategori === 1
-        ? res.json({
-            message: `Kategori dengan id ${id} berhasil di hapus`,
-          })
-        : res.json({
-            message: `Kategori dengan id ${id} tidak bisa di hapus`,
-          });
+      res.redirect("/kategori");
     } catch (err) {
       res.json(err);
     }
