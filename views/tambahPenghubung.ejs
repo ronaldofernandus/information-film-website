@@ -42,9 +42,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/kategori">Kategori</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/penghubung/add">Penghubung</a>
-              </li>
+
             </ul>
           </div>
         </div>
@@ -52,43 +50,51 @@
     </div>
     <div class="row ">
       <div class="col-12 text-center">
-        <h5>Halaman Depan</h5>
-        
+        <h5>Tambah Data Film</h5>
+        <p>
+          Berisi Halaman Form Input
+        </p>
       </div>
       <div class="col-12 my-2">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Poster</th>
-              <th>Film</th>
-              <th>Sinopsis</th>
-              <th>Kategori</th>
-              <th>Tanggal Tayang</th> 
-              <th>Mulai Jam</th>
+        <form action="/penghubung/add" method="post">
+          <div class="mb-3">
+            <label class="form-label" for="customFile">Film Id</label>
+            <input type="number" class="form-control"  name="filmId" />
+          </div>
+          <div class="mb-3">
+            <label for="film" class="form-label">Kategori Id</label>
+            <input type="number" class="form-control" name="kategoriId">
+          </div>
+          <div class="mb-3">
+            <label for="tanggal" class="form-label">Tanggal</label>
+            <div class="input-group mb-3">
+              <select class="form-select" name="hariTayang">
+                <option selected>Silahkan Pilih tanggal</option>
+                <% jadwalData.forEach(jadwal => { %>
 
-            </tr>
-          </thead>
-          <tbody>
-            <% tempPenghubungs.forEach((tempPenghubung,index) => { %>
-            <tr>
-              <td><%= index+1 %></td>
-              <td><img src="<%= tempPenghubung.film.image %>" class="img-fluid" alt="Responsive image"></td>
-              <td><%= tempPenghubung.film.namaFilm %></td>
-              <td><%= tempPenghubung.film.sinopsis %></td>
-              <td><%= tempPenghubung.kategori.namaKategori %></td>
-              <% tempPenghubung.film.jadwals.forEach(jadwal=>{ %>
-              <td><%= jadwal.hariTayang %></td>
-              <td><%= jadwal.jamTayang %></td>
+                <option value="<%= jadwal.hariTayang %>"><%= jadwal.hariTayang %></option>
+                <% }) %>
+              </select>
+            </div>
 
-              <% }) %>
+          </div>
+          <div class="mb-3">
+            <label for="kapal" class="form  -label">Jam</label>
+            <div class="input-group mb-3">
+              <select class="form-select" name="jamTayang">
+                <option selected>Silahkan Pilih Jam</option>
+                <% jadwalData.forEach(jadwal => { %>
 
+                <option value="<%= jadwal.jamTayang %>"><%= jadwal.jamTayang %></option>
+                <% }) %>
+              </select>
+            </div>
 
-            </tr>
+          </div>
 
-            <% }) %>
-          </tbody>
-        </table>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
 
       </div>
     </div>
