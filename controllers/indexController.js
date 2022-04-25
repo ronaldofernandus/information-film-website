@@ -14,10 +14,7 @@ class indexController {
           },
         ],
       });
-        // console.log(tempPenghubungs[0].film);
-        // console.log(tempPenghubungs[0].film.jadwals);
-        console.log(tempPenghubungs[0].kategori.namaKategori);
-
+     
       res.render("index.ejs", { tempPenghubungs });
     } catch (err) {
       res.json(err);

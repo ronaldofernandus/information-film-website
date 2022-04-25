@@ -68,13 +68,7 @@ class filmController {
       let hapusFilm = await film.destroy({
         where: { id },
       });
-      hapusFilm === 1
-        ? res.json({
-            message: `Film dengan id ${id} sudah di hapus`,
-          })
-        : res.json({
-            message: `Film dengan id ${id} tidak bisa di hapus`,
-          });
+     res.redirect('/film')
     } catch (err) {
       res.json(err);
     }
