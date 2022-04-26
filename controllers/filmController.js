@@ -83,7 +83,7 @@ class filmController {
         });
       }
 
-      res.redirect("/");
+      res.redirect("/Film");
     } catch (err) {
       res.json(err);
     }
