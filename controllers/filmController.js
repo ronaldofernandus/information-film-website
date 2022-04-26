@@ -7,6 +7,7 @@ class filmController {
         order: [["id", "Asc"]],
       });
       res.render("Film/film.ejs", { tempFilms });
+      // res.json(tempFilms);
     } catch (err) {
       res.json(err);
     }
