@@ -1,4 +1,4 @@
-const { film, jadwal, kategori } = require("../models");
+const { film, jadwal, kategori, penghubung } = require("../models");
 
 class filmController {
   static async lihatFilm(req, res) {
@@ -68,16 +68,22 @@ class filmController {
       let hapusFilm = await film.destroy({
         where: { id },
       });
-      let hapusPenghubung=await penghubung.destroy({
-          where: { 
+        
+      let findFilm = await penghubung.findAll({
+        where: {
+          filmId: id,
+        },
+      });
+      
+      if (findFilm.length > 0) {
+        let hapusPenghubung = await penghubung.destroy({
+          where: {
+            filmId: id,
+          },
+        });
+      }
 
-            filmId:id,
-            kategoriId:id,
-            jadwalId:id
-
-            },
-      })
-     res.redirect('/')
+      res.redirect("/");
     } catch (err) {
       res.json(err);
     }
