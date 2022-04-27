@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=
+Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1
+,900&display=swap" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
+
+
+    <link rel="stylesheet" href="styles/main.css">
+
+
+
+<body>
+    <div class="container">
+        <nav class="row navbar navbar-expand-lg navbar-light bg-white">
+            <a href="" class="navbar-brand">
+                <a href="/">
+                    <h3>Website Film</h3>
+                </a>
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navigasi">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navigasi">
+                <ul class="navbar-nav ml-auto mr-3">
+
+
+                    <li class="nav-item mx-md-2">
+                        <a href="/film" class="nav-link active">Film</a></li>
+                    <a href="/jadwal" class="nav-link">Jadwal</a>
+                    </li>
+
+                    <li class="nav-item mx-md-2">
+                        <a href="/kategori" class="nav-link">Kategori</a>
+                    </li>
+                    <li class="nav-item mx-md-2">
+                        <a href="/penghubung/add" class="nav-link">Penghubung</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <main>
+        <section class="section-details-header">
+        </section>
+        <section class="section-details-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 pl-lg-0">
+                        <div class="card card-details">
+
+                            <h1>
+                                <%= tempPenghubung.film.namaFilm %>
+                            </h1>
+                            <div class="gallery">
+                                <div class="xzoom-container">
+                                    <img src="<%= tempPenghubung.film.image %>" class="xzoom" id="xzoom-default">
+                                </div>
+                            </div>
+                            <h2>
+                                Sinopsis
+                            </h2>
+                            <p>
+                                <%= tempPenghubung.film.sinopsis %>
+                            </p>
+                            <div class="features row">
+                                <div class="col-md-4 border-left">
+
+                                    <div class="description">
+                                        <h3>
+                                            Kategori
+                                        </h3>
+                                        <p><%= tempPenghubung.kategori.namaKategori %></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 border-left">
+
+                                    <div class="description">
+                                        <% tempPenghubung.film.jadwals.forEach(jadwal=>{ %>
+                                        <h3>
+                                            Hari Tayang
+                                        </h3>
+                                        <p><%= jadwal.hariTayang %></p>
+                                        <% }) %>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 border-left">
+
+                                    <div class="description">
+                                        <% tempPenghubung.film.jadwals.forEach(jadwal=>{ %>
+                                        <h3>
+                                            Jam Tayang
+                                        </h3>
+                                        <p><%= jadwal.jamTayang %>
+                                        </p>
+                                        <% }) %>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+    <script src="libraries/jquery/jquery-3.6.0.min.js"></script>
+
+
+    <script src="libraries/bootstrap/js/bootstrap.js"></script>
+    <script src="libraries/retina/retina.min.js"></script>
+
+</body>
+
+</html>

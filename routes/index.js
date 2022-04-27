@@ -15,4 +15,8 @@ route.use("/kategori", kategoriRoute);
 const penghubungRoute = require("./penghubung");
 route.use("/penghubung", penghubungRoute);
 
+const detailRoute = require("./detail");
+route.use("/detail", detailRoute);
+
+
 module.exports = route;
