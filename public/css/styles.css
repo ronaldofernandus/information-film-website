@@ -4,6 +4,6 @@
     font-size: 15px;
 }
 
-.row-background {
-    background-image:url('picture/black-pearl.jpg') ;
+body {
+    font-family: "Fira Sans", sans-serif;
 }
